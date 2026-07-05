@@ -7,17 +7,39 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-UPLOAD_DIR = BASE_DIR / os.environ.get(
+
+def resolve_path(env_name: str, default: str) -> Path:
+    """
+    Resolve a directory path from an environment variable.
+
+    - Relative paths are resolved relative to BASE_DIR.
+    - Absolute paths are used as-is.
+    """
+
+    path = Path(os.environ.get(env_name, default))
+
+    if not path.is_absolute():
+        path = BASE_DIR / path
+
+    path.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    return path
+
+
+UPLOAD_DIR = resolve_path(
     "UPLOAD_DIR",
     "uploads",
 )
 
-FRAME_DIR = BASE_DIR / os.environ.get(
+FRAME_DIR = resolve_path(
     "FRAME_DIR",
     "frames",
 )
 
-AUDIO_DIR = BASE_DIR / os.environ.get(
+AUDIO_DIR = resolve_path(
     "AUDIO_DIR",
     "audio",
 )
@@ -29,19 +51,9 @@ SCENE_DETECTION_THRESHOLD = float(
     )
 )
 
-PORT=int(os.environ.get("PORT", 7000))
-
-UPLOAD_DIR.mkdir(
-    parents=True,
-    exist_ok=True,
-)
-
-FRAME_DIR.mkdir(
-    parents=True,
-    exist_ok=True,
-)
-
-AUDIO_DIR.mkdir(
-    parents=True,
-    exist_ok=True,
+PORT = int(
+    os.environ.get(
+        "PORT",
+        "7000",
+    )
 )
