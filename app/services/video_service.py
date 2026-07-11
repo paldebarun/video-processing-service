@@ -4,6 +4,7 @@ from services.representative_frame_extractor import RepresentativeFrameExtractor
 from services.metadata_extractor import MetadataExtractor
 from utils.file_utils import FileUtils
 from services.scene_detector import SceneDetector
+from pathlib import Path
 
 
 class VideoService:
@@ -20,10 +21,10 @@ class VideoService:
 
     def process(
         self,
-        file,
+        video_path: Path,
     ) -> ProcessVideoResponse:
 
-        video_path = FileUtils.save_upload(file)
+        # video_path = FileUtils.save_upload(file)
 
         metadata = self.metadata_extractor.extract(
             video_path

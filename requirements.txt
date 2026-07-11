@@ -1,7 +1,16 @@
 fastapi
 uvicorn[standard]
+
 python-multipart
 python-dotenv
 pydantic
+
+redis
+httpx
+
+supervisor
+
 ffmpeg-python
 scenedetect
+
+opencv-python-headless

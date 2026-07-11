@@ -1,11 +1,14 @@
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
+from services.job_service import JobService
 from exceptions import VideoProcessingException
 from services.video_service import VideoService
+from models.job_model import VideoJob
 
 router = APIRouter()
 
 video_service = VideoService()
+job_service = JobService()
 
 
 @router.get("/")
@@ -17,18 +20,12 @@ def health():
     }
 
 
-@router.post("/process")
-def process_video(
-    file: UploadFile = File(...),
-):
+@router.post("/jobs")
+def submit_job(request: VideoJob):
 
-    try:
+    job_service.submit(request)
 
-        return video_service.process(file)
-
-    except VideoProcessingException as e:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(e),
-        )
+    return {
+        "task_id": request.task_id,
+        "status": "QUEUED",
+    }
