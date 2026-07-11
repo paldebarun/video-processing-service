@@ -1,12 +1,12 @@
 from pathlib import Path
 
+from models.job_model import VideoJob
 from config import (
     VIDEO_QUEUE,
-    EVENT_STREAM,
+    
 )
 
 from messaging.redis_queue import RedisQueue
-from messaging.redis_stream import RedisStream
 
 from models.event_model import VideoCompletedEvent
 from services.event_service import EventService
@@ -21,7 +21,7 @@ class VideoWorker:
 
         self.queue = RedisQueue()
 
-        self.stream = RedisStream()
+        
 
         self.video_service = VideoService()
         self.event_service = EventService()
@@ -65,14 +65,14 @@ class VideoWorker:
         job: dict,
     ):
 
-        task_id = job["task_id"]
+        video_job = VideoJob(**job)
 
         video_path = Path(
-            job["video_path"]
+            video_job.video_path
         )
 
         logger.info(
-            f"Processing task: {task_id}"
+            f"Processing task: {video_job.task_id}"
         )
 
         result = self.video_service.process(
@@ -80,7 +80,7 @@ class VideoWorker:
         )
 
         event = VideoCompletedEvent(
-            task_id=task_id,
+            task_id=video_job.task_id,
             payload=result,
         )
 
@@ -89,5 +89,5 @@ class VideoWorker:
          )
 
         logger.info(
-            f"Completed task: {task_id}"
+            f"Completed task: {video_job.task_id}"
         )
