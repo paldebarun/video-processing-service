@@ -12,7 +12,9 @@ from models.event_model import VideoCompletedEvent
 from services.event_service import EventService
 from services.video_service import VideoService
 
-from utils.logger import logger
+from utils.logger import Logger
+
+logger = Logger.get_logger()
 
 
 class VideoWorker:

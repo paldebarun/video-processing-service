@@ -6,7 +6,9 @@ from config import VIDEO_QUEUE
 
 from models.job_model import VideoJob
 
-from utils.logger import logger
+from utils.logger import Logger
+
+logger = Logger.get_logger()
 
 
 class JobService:

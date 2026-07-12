@@ -7,7 +7,9 @@ from models.event_model import (
     VideoFailedEvent,
 )
 
-from utils.logger import logger
+from utils.logger import Logger
+
+logger=Logger.get_logger()
 
 
 class EventService:
