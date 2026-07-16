@@ -54,7 +54,7 @@ SCENE_DETECTION_THRESHOLD = float(
 PORT = int(
     os.environ.get(
         "PORT",
-        "7000",
+        "3000",
     )
 )
 
@@ -90,3 +90,4 @@ EVENT_STREAM = os.getenv(
     "EVENT_STREAM",
     "workflow_events",
 )
+

@@ -13,4 +13,6 @@ supervisor
 ffmpeg-python
 scenedetect
 
+colorama
+
 opencv-python-headless
