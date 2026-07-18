@@ -1,6 +1,6 @@
 import sys
 
-from workers.video_worker import VideoWorker
+from app.workers.video_worker import VideoWorker
 
 
 WORKERS = {

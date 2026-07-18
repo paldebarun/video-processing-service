@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
-from models.response_models import (
+from app.models.response_models import (
     ProcessVideoResponse,
 )
 

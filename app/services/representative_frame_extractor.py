@@ -2,10 +2,10 @@ from pathlib import Path
 import subprocess
 import uuid
 
-from config import FRAME_DIR
-from exceptions import VideoProcessingException
-from models.response_models import Scene
-from models.internal_models import SceneBoundary
+from app.config import FRAME_DIR
+from app.exceptions import VideoProcessingException
+from app.models.response_models import Scene
+from app.models.internal_models import SceneBoundary
 
 class RepresentativeFrameExtractor:
 

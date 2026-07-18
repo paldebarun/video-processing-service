@@ -1,13 +1,13 @@
-from messaging.redis_stream import RedisStream
+from app.messaging.redis_stream import RedisStream
 
-from config import EVENT_STREAM
+from app.config import EVENT_STREAM
 
-from models.event_model import (
+from app.models.event_model import (
     VideoCompletedEvent,
     VideoFailedEvent,
 )
 
-from utils.logger import Logger
+from app.utils.logger import Logger
 
 logger=Logger.get_logger()
 

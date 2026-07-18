@@ -1,12 +1,12 @@
-from pathlib import Path
 
-from messaging.redis_queue import RedisQueue
 
-from config import VIDEO_QUEUE
+from app.messaging.redis_queue import RedisQueue
 
-from models.job_model import VideoJob
+from app.config import VIDEO_QUEUE
 
-from utils.logger import Logger
+from app.models.job_model import VideoJob
+
+from app.utils.logger import Logger
 
 logger = Logger.get_logger()
 

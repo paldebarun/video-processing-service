@@ -2,9 +2,9 @@ from pathlib import Path
 
 from scenedetect import SceneManager, open_video
 from scenedetect.detectors import ContentDetector
-from config import SCENE_DETECTION_THRESHOLD
-from exceptions import VideoProcessingException
-from models.internal_models import SceneBoundary
+from app.config import SCENE_DETECTION_THRESHOLD
+from app.exceptions import VideoProcessingException
+from app.models.internal_models import SceneBoundary
 
 
 class SceneDetector:
