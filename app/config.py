@@ -54,6 +54,40 @@ SCENE_DETECTION_THRESHOLD = float(
 PORT = int(
     os.environ.get(
         "PORT",
-        "7000",
+        "3000",
     )
 )
+
+REDIS_HOST = os.getenv(
+    "REDIS_HOST",
+    "localhost",
+)
+
+REDIS_PORT = int(
+    os.getenv(
+        "REDIS_PORT",
+        "6379",
+    )
+)
+
+REDIS_PASSWORD = os.getenv(
+    "REDIS_PASSWORD",
+)
+
+REDIS_DB = int(
+    os.getenv(
+        "REDIS_DB",
+        "0",
+    )
+)
+
+VIDEO_QUEUE = os.getenv(
+    "VIDEO_QUEUE",
+    "video_queue",
+)
+
+EVENT_STREAM = os.getenv(
+    "EVENT_STREAM",
+    "workflow_events",
+)
+

@@ -2,8 +2,8 @@ from pathlib import Path
 import subprocess
 import uuid
 
-from config import AUDIO_DIR
-from exceptions import VideoProcessingException
+from app.config import AUDIO_DIR
+from app.exceptions import VideoProcessingException
 
 
 class AudioExtractor:
